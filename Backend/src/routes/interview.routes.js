@@ -1,5 +1,5 @@
 const express = require("express");
-const authMiddleware = require("../middlewares/auth.middleware")
+const {authUser} = require("../middlewares/auth.middleware")
 const interviewController = require("../controllers/interview.controller");
 const upload = require("../middlewares/file.middleware");
 
@@ -11,7 +11,7 @@ const interviewRouter = express.Router();
  * @access private
  */
 
-interviewRouter.post("/dashboard", authMiddleware.authUser, upload.single("resume"), interviewController.generateInterviewReportController);
+interviewRouter.post("/dashboard", authUser, upload.single("resume"), interviewController.generateInterviewReportController);
 
 
 /**
@@ -19,7 +19,7 @@ interviewRouter.post("/dashboard", authMiddleware.authUser, upload.single("resum
  * @description Get interview report by id.
  * @access private
  */
-interviewRouter.get("/dashboard/report/:id", authMiddleware.authUser, interviewController.getInterviewReportByIdController);
+interviewRouter.get("/dashboard/report/:id", authUser, interviewController.getInterviewReportByIdController);
 
 
 /**
@@ -27,7 +27,7 @@ interviewRouter.get("/dashboard/report/:id", authMiddleware.authUser, interviewC
  * @description get all interview reports of logged in user.
  * @access private
  */
-interviewRouter.get("/dashboard", authMiddleware.authUser, interviewController.getAllInterviewReportController)
+interviewRouter.get("/dashboard", authUser, interviewController.getAllInterviewReportController)
 
 /**
  * @route GET /api/interview/dashboard/report/:id/download
@@ -35,6 +35,6 @@ interviewRouter.get("/dashboard", authMiddleware.authUser, interviewController.g
  * @access private
  */
 interviewRouter.get(
-  "/dashboard/report/:id/download", authMiddleware.authUser, interviewController.generateResumePdfController);
+  "/dashboard/report/:id/download", authUser, interviewController.generateResumePdfController);
 
 module.exports = interviewRouter;
