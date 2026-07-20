@@ -5,6 +5,11 @@ const genAI = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GENAI_API_KEY,
 });
 
+console.log(
+  "GENAI KEY EXISTS:",
+  !!process.env.GOOGLE_GENAI_API_KEY
+);
+
 const interviewReportSchema = {
   type: Type.OBJECT,
   properties: {
