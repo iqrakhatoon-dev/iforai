@@ -38,7 +38,7 @@ interviewRouter.get(
   "/dashboard/report/:id/download", authUser, interviewController.generateResumePdfController);
 
 
-  app.get("/test-gemini", async (req, res) => {
+  interviewRouter.get("/test-gemini", async (req, res) => {
   try {
     const response = await genAI.models.generateContent({
       model: "gemini-2.5-flash",
