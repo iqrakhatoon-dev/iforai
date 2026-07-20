@@ -14,11 +14,6 @@ async function generateInterviewReportController(req, res) {
   ).getText();
   const { selfDescription, jobDescription } = req.body;
 
-  console.log(
-  "GENAI KEY:",
-  process.env.GOOGLE_GENAI_API_KEY?.slice(0,10)
-);
-
   const interviewReportByAi = await generateInterviewReport({
     resume: resumeContent.text,
     selfDescription,

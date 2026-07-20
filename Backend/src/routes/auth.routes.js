@@ -2,9 +2,6 @@ const {Router} = require('express');
 const authController = require('../controllers/auth.controller');
 const {authUser} = require('../middlewares/auth.middleware');
 
-console.log("authUser:", authUser);
-console.log("authController:", authController);
-
 const authRouter = Router();
 
 /**

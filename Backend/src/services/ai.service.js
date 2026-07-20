@@ -5,39 +5,6 @@ const genAI = new GoogleGenAI({
   apiKey: process.env.GOOGLE_GENAI_API_KEY,
 });
 
-router.get("/test-gemini", async (req, res) => {
-  try {
-    const response = await genAI.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: "Say hello",
-    });
-
-    res.json({
-      success: true,
-      text: response.text,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      error: err.message,
-      details: err,
-    });
-  }
-});
-
-console.log(
-  "GENAI KEY EXISTS:",
-  !!process.env.GOOGLE_GENAI_API_KEY
-);
-
-console.log("GENAI KEY PREFIX:",
-  process.env.GOOGLE_GENAI_API_KEY?.slice(0, 10)
-);
-
-console.log("GENAI KEY LENGTH:",
-  process.env.GOOGLE_GENAI_API_KEY?.length
-);
-
 const interviewReportSchema = {
   type: Type.OBJECT,
   properties: {
