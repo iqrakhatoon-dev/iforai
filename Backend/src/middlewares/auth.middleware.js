@@ -43,3 +43,5 @@ async function authUser(req, res, next) {
     });
   }
 }
+
+module.exports = { authUser };
