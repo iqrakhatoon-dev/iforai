@@ -45,7 +45,13 @@ async function registerUserController(req, res) {
   );
 
   //set token into cookie
-  res.cookie("token", token);
+  //set token into cookie
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 24 * 60 * 60 * 1000,
+  });
 
   // Send response
   res.status(201).json({
@@ -57,8 +63,6 @@ async function registerUserController(req, res) {
     },
   });
 }
-
-
 
 /**
  * @name loginUserController
@@ -90,7 +94,12 @@ async function loginUserController(req, res) {
   );
 
   //set token into cookie
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 24 * 60 * 60 * 1000,
+  });
 
   // Send response
   res.status(200).json({
@@ -102,8 +111,6 @@ async function loginUserController(req, res) {
     },
   });
 }
-
-
 
 /**
  * @name logoutUserController
@@ -121,13 +128,15 @@ async function logoutUserController(req, res) {
   await BlacklistTokenModel.create({ token });
 
   // Clear the token cookie
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+  });
 
   // Send response
   res.status(200).json({ message: "Logout successfully" });
 }
-
-
 
 /**
  * @name getMeController
