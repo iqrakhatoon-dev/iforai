@@ -37,4 +37,22 @@ interviewRouter.get("/dashboard", authUser, interviewController.getAllInterviewR
 interviewRouter.get(
   "/dashboard/report/:id/download", authUser, interviewController.generateResumePdfController);
 
+
+  app.get("/test-gemini", async (req, res) => {
+  try {
+    const response = await genAI.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: "Hello"
+    });
+
+    res.json(response.text);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: err.message,
+      error: err
+    });
+  }
+});
+
 module.exports = interviewRouter;

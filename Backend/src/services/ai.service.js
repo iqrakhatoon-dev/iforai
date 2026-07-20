@@ -10,6 +10,14 @@ console.log(
   !!process.env.GOOGLE_GENAI_API_KEY
 );
 
+console.log("GENAI KEY PREFIX:",
+  process.env.GOOGLE_GENAI_API_KEY?.slice(0, 10)
+);
+
+console.log("GENAI KEY LENGTH:",
+  process.env.GOOGLE_GENAI_API_KEY?.length
+);
+
 const interviewReportSchema = {
   type: Type.OBJECT,
   properties: {
@@ -174,7 +182,7 @@ Rules (follow strictly):
 
   const response = await retryWithBackoff(() =>
     genAI.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
