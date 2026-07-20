@@ -1,20 +1,23 @@
 const express = require('express');
-const cookeParser = require('cookie-parser');
-const cors = require('cors')
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
 const app = express();
 
 app.use(express.json());
-app.use(cookeParser());
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-}))
+app.use(cookieParser());
 
-/* require all the routes here from routes folder / auth.routes file */
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://iforai.vercel.app"
+  ],
+  credentials: true
+}));
+
 const authRouter = require('./routes/auth.routes');
 const interviewRouter = require('./routes/interview.routes');
 
-/* using all routes here with prefix /api/auth */
 app.use('/api/auth', authRouter);
 app.use('/api/interview', interviewRouter);
 
