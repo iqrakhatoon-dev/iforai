@@ -34,8 +34,7 @@ interviewRouter.get("/dashboard", authUser, interviewController.getAllInterviewR
  * @description Download ai generated resume pdf
  * @access private
  */
-interviewRouter.get(
-  "/dashboard/report/:id/download", authUser, interviewController.generateResumePdfController);
+interviewRouter.get("/dashboard/report/:id/download", authUser, interviewController.generateResumePdfController);
 
 
 module.exports = interviewRouter;
