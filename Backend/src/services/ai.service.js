@@ -229,7 +229,7 @@ Rules (follow strictly):
     .trim();
 
   const browser = await puppeteer.launch({
-    args: chromium.args,
+    args: chromium.default,
     executablePath: await chromium.executablePath(),
     headless: true,
   });
