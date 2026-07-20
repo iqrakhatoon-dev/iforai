@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const authController = require('../controllers/auth.controller');
-const authMiddleware = require('../middlewares/auth.middleware');
+const {authUser} = require('../middlewares/auth.middleware');
 
 console.log("authMiddleware:", authMiddleware);
 console.log("authController:", authController);
@@ -34,7 +34,7 @@ authRouter.get('/logout', authController.logoutUserController);
  * @description get the current logged in user details, expects token in the cookie
  * @access Private
  */
-authRouter.get('/get-me', authMiddleware.authUser, authController.getMeController);
+authRouter.get('/get-me', authUser, authController.getMeController);
 
 
 module.exports = authRouter;
