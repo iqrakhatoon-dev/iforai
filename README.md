@@ -1,4 +1,3 @@
-<img width="1900" height="911" alt="Screenshot 2026-07-19 150717" src="https://github.com/user-attachments/assets/ca130100-6df5-412f-b717-e9469a49de24" />
 # iforai — AI-Powered Interview Preparation Tool
 
 > Upload your resume. Paste a job description. Let AI do the rest.
